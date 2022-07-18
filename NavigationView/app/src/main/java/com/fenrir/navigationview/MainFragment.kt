@@ -1,6 +1,7 @@
 package com.fenrir.navigationview
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,17 @@ import com.fenrir.navigationview.databinding.FragmentMainBinding
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     companion object{
-        fun newInstance():Fragment{
-            return MainFragment()
+        private var instance:MainFragment?=null
+        @Synchronized
+        fun get():MainFragment{
+            if(instance==null){
+                instance = MainFragment()
+            }
+            return instance!!
         }
+//        fun newInstance():Fragment{
+//            return MainFragment()
+//        }
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +43,7 @@ class MainFragment : Fragment() {
                 R.id.pageC -> requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.container, PageCFragment.newInstance()).commit()
             }
-            binding.drawerLayout.closeDrawers()
+            binding.drawerLayout.close()
             true
         }
     }

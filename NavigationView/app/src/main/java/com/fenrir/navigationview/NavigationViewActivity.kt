@@ -11,6 +11,6 @@ class NavigationViewActivity : AppCompatActivity() {
         binding = ActivityNavigationViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, MainFragment.newInstance()).commit()
+            .replace(R.id.container, MainFragment.get()).commit()
     }
 }

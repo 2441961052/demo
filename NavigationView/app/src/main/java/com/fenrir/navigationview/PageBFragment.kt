@@ -26,7 +26,7 @@ class PageBFragment: Fragment() {
     private fun initView() {
         binding.btnBack.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance()).commit()
+                .replace(R.id.container, MainFragment.get()).commit()
         }
     }
 }
